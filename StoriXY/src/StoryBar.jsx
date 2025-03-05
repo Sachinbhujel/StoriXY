@@ -90,20 +90,22 @@ const suggestionsData = [
 ];
 
 function StoryBar({ uploadedImage }) {
-    const [myStory, setMyStory] = useState(null);
+    const [myStories, setMyStories] = useState([]);
     const [showAddStory, setShowAddStory] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [showImageView, setShowImageView] = useState(false);
     const [imageToShow, setImageToShow] = useState("");
+    
 
     const defaultImage = "https://i.imgur.com/FW4cGCC.jpeg";
 
     const handleStoryUpload = (imageUrl) => {
-        setMyStory(imageUrl);
+        setMyStories((prevStories) => [...prevStories, imageUrl]);
         setShowAddStory(false);
+        setActiveIndex(images.length - 1);
     };
 
-    const images = [uploadedImage || defaultImage, myStory].filter(Boolean);
+    const images = [uploadedImage || defaultImage, ...myStories].filter(Boolean);
 
     const handleViewStory = (index) => {
         setImageToShow(images[index]);
@@ -114,6 +116,22 @@ function StoryBar({ uploadedImage }) {
         setShowImageView(false);
     };
 
+    const handleNext = () => {
+        setActiveIndex((prevIndex) => {
+            const newIndex = (prevIndex + 1) % images.length;
+            setImageToShow(images[newIndex]);
+            return newIndex;
+        });
+    }
+
+    const handlePrev = () => {
+        setActiveIndex((prevIndex) => {
+            const newIndex = prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+            setImageToShow(images[newIndex]);
+            return newIndex;
+        });
+    }
+
     return (
         <>
             {showImageView ? (
@@ -121,11 +139,23 @@ function StoryBar({ uploadedImage }) {
                     <button onClick={handleBack} className="back-button">
                         ←
                     </button>
-                    <img
+                    <div className="carousel-controls">
+                        {images.length > 1 &&
+                         (<>
+                            <button className="prev-button" onClick={handlePrev}>&#10094;</button>
+                         </>
+                         )}
+                        <img
                         src={imageToShow}
                         alt="Story"
                         className="full-screen-image"
                     />
+                    {images.length > 1 &&
+                         (<>
+                            <button className="next-button" onClick={handleNext}>&#10094;</button>
+                         </>
+                         )}
+                    </div>
                 </div>
             ) : (
                 <>

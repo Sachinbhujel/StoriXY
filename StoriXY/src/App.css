@@ -660,13 +660,19 @@ font-family: arial;
 
 .back-button {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  top: 12px;
+  left: 12px;
+  background-color: transparent;
+  z-index: 1;
   border: none;
   padding: 1px;
-  font-size: 18px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  font-size: 2rem;
+  color: white;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -675,6 +681,40 @@ font-family: arial;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.prev-button,
+.next-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 40px;
+  height: 40px;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
 
 @media (max-width: 600px) {
   header {
@@ -835,6 +875,20 @@ font-family: arial;
   }
 
   .full-screen-image {
-      width: 100%;
+      width: 90%;
   }
+
+  .prev-button {
+    left: 5px;
+  }
+  
+  .next-button {
+    right: 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .full-screen-image {
+    width: 100%;
+}
 }
