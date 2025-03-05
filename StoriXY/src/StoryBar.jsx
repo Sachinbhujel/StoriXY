@@ -152,7 +152,7 @@ function StoryBar({ uploadedImage }) {
                     />
                     {images.length > 1 &&
                          (<>
-                            <button className="next-button" onClick={handleNext}>&#10094;</button>
+                            <button className="next-button" onClick={handleNext}>&#10095;</button>
                          </>
                          )}
                     </div>
