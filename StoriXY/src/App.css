@@ -743,10 +743,6 @@ header h1 {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-
-.p1{
-    background-color: red;
-}
 @media (max-width: 600px) {
     header {
         padding: 10px 15px;
