@@ -9,7 +9,7 @@ import AddStory from './AddStory';
 function Bottom() {
     const [active, setActive] = useState("home");
     const [showAddStory, setShowAddStory] = useState(false);
-    const [uploadedImage, setUploadedImage] = useState(null);
+    const [uploadedImages, setUploadedImages] = useState([]);
 
     const handleClick = (tab) => {
         if (showAddStory) return; 
@@ -22,7 +22,7 @@ function Bottom() {
     };
 
     const handleUploadImage = (image) => {
-        setUploadedImage(image);
+        setUploadedImages((prevImages) => [...prevImages, image]);
     };
 
     return (
@@ -34,7 +34,7 @@ function Bottom() {
                 />
             ) : (
                 <>
-                    {active === "home" && <StoryBar uploadedImage={uploadedImage} />}
+                    {active === "home" && <StoryBar uploadedImages={uploadedImages} />}
                     {active === "search" && <Search />}
                     {active === "trending" && <Trending />}
                     {active === "profile" && <Profile />}

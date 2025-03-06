@@ -22,7 +22,9 @@ function AddStory({ onBack, onUpload }) {
     return (
         <div className="add-story-container">
             <div className="top-bar">
-                <button className="back-btn" onClick={onBack}>←</button>
+                <div className="back-btn-div" onClick={onBack}>
+                    <button className="back-btn">←</button>
+                </div>
                 <h2>New Story</h2>
                 <button className="post-btn" onClick={handlePost} disabled={!selectedFile}>
                     Post

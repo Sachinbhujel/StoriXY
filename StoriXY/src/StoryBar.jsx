@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
 import "./App.css";
 import AddStory from "./AddStory";
 
@@ -89,14 +88,20 @@ const suggestionsData = [
     },
 ];
 
-function StoryBar({ uploadedImage }) {
+function StoryBar({ uploadedImages = [] }) {
     const [myStories, setMyStories] = useState([]);
     const [showAddStory, setShowAddStory] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [showImageView, setShowImageView] = useState(false);
     const [imageToShow, setImageToShow] = useState("");
-    
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
+    const [showArrowButton, setShowArrowButton] = useState(true);
 
+
+    
+    const [othersImageView, setOthersImageView] = useState(false);
+    const [othersToShow, setOthersToShow] = useState("");
+    
     const defaultImage = "https://i.imgur.com/FW4cGCC.jpeg";
 
     const handleStoryUpload = (imageUrl) => {
@@ -105,12 +110,22 @@ function StoryBar({ uploadedImage }) {
         setActiveIndex(images.length - 1);
     };
 
-    const images = [uploadedImage || defaultImage, ...myStories].filter(Boolean);
+    const images = [
+        ...(Array.isArray(uploadedImages) && uploadedImages.length > 0
+            ? uploadedImages
+            : [defaultImage]),
+        ...myStories,
+    ].filter(Boolean);
 
     const handleViewStory = (index) => {
-        setImageToShow(images[index]);
+        {index === 0 ? setImageToShow(images[index]) : setImageToShow(index);}
         setShowImageView(true);
+        setShowDeleteButton(index === 0);
     };
+
+    const handleOthersStory = (image) => {
+        console.log(image)
+    }
 
     const handleBack = () => {
         setShowImageView(false);
@@ -122,15 +137,17 @@ function StoryBar({ uploadedImage }) {
             setImageToShow(images[newIndex]);
             return newIndex;
         });
-    }
+    };
 
     const handlePrev = () => {
         setActiveIndex((prevIndex) => {
-            const newIndex = prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+            const newIndex =
+                prevIndex === 0 ? images.length - 1 : prevIndex - 1;
             setImageToShow(images[newIndex]);
             return newIndex;
         });
-    }
+    };
+
 
     return (
         <>
@@ -139,22 +156,38 @@ function StoryBar({ uploadedImage }) {
                     <button onClick={handleBack} className="back-button">
                         ←
                     </button>
+                        {showDeleteButton && (<span
+                            className="material-symbols-outlined delete-button"
+                        >
+                            delete
+                        </span>)}
                     <div className="carousel-controls">
-                        {images.length > 1 &&
-                         (<>
-                            <button className="prev-button" onClick={handlePrev}>&#10094;</button>
-                         </>
-                         )}
+                        {images.length > 1 && (
+                            <>
+                                <button
+                                    className="prev-button"
+                                    onClick={handlePrev}
+                                >
+                                    &#10094;
+                                </button>
+                            </>
+                        )}
                         <img
-                        src={imageToShow}
-                        alt="Story"
-                        className="full-screen-image"
-                    />
-                    {images.length > 1 &&
-                         (<>
-                            <button className="next-button" onClick={handleNext}>&#10095;</button>
-                         </>
-                         )}
+                            src={imageToShow}
+                            alt="Story"
+                            className="full-screen-image"
+                        />
+
+                        {images.length > 1 && (
+                            <>
+                                <button
+                                    className="next-button"
+                                    onClick={handleNext}
+                                >
+                                    &#10095;
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             ) : (
@@ -172,7 +205,7 @@ function StoryBar({ uploadedImage }) {
                             <div className="my-story-img-div">
                                 {images.length > 0 ? (
                                     <>
-                                        <div className="carousel">
+                                        <div className="carousel" id="my-story">
                                             <img
                                                 src={images[activeIndex]}
                                                 className="my-story-img"
@@ -208,7 +241,11 @@ function StoryBar({ uploadedImage }) {
                                 </div>
                                 <div className="stories-container">
                                     {storiesData.map((story) => (
-                                        <div key={story.id} className="story">
+                                        <div
+                                            key={story.id}
+                                            className="story"
+                                            onClick={() => handleViewStory(story.image)}
+                                        >
                                             <img
                                                 src={story.image}
                                                 alt={story.name}
@@ -230,7 +267,7 @@ function StoryBar({ uploadedImage }) {
                                 </div>
                                 <div className="stories-container">
                                     {suggestionsData.map((story) => (
-                                        <div key={story.id} className="story">
+                                        <div key={story.id} className="story" onClick={() => handleOthersStory(story.image)}>
                                             <img
                                                 src={story.image}
                                                 alt={story.name}

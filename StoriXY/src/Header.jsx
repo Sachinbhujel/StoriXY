@@ -9,7 +9,7 @@ function Header({onClick, notificationCount})
         <header>
             <h1>StoriXY</h1>
             <div className='notify_icon' onClick={onClick}>
-              <span className="material-symbols-outlined">notifications</span>
+              <span className="material-symbols-outlined notification-icon">notifications</span>
               {notificationCount > 0 && <p>{notificationCount}</p>}
             </div>
         </header>
