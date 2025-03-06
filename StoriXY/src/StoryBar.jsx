@@ -95,8 +95,6 @@ function StoryBar({ uploadedImages = [] }) {
     const [showImageView, setShowImageView] = useState(false);
     const [imageToShow, setImageToShow] = useState("");
     const [showDeleteButton, setShowDeleteButton] = useState(false);
-    const [showArrowButton, setShowArrowButton] = useState(true);
-
 
     
     const [othersImageView, setOthersImageView] = useState(false);
@@ -243,7 +241,7 @@ function StoryBar({ uploadedImages = [] }) {
                                     {storiesData.map((story) => (
                                         <div
                                             key={story.id}
-                                            className="story"
+                                            className="story others-story"
                                             onClick={() => handleViewStory(story.image)}
                                         >
                                             <img
