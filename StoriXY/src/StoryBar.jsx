@@ -191,7 +191,7 @@ function StoryBar({ uploadedImages = [] }) {
                     </div>
                 </div>
             ) : (
-                <>
+                <div className="myApp">
                     {showAddStory ? (
                         <AddStory
                             onBack={() => setShowAddStory(false)}
@@ -290,7 +290,7 @@ function StoryBar({ uploadedImages = [] }) {
                             </div>
                         </>
                     )}
-                </>
+                </div>
             )}
         </>
     );

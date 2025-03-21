@@ -71,21 +71,27 @@ const Profile = ({ user, userClick, handleBackProfileBtn }) => {
                     <div className="stories-section">
                         <h3 className="stories-title">Stories</h3>
                         <div className="stories-list">
-                            {user.stories_length.map((story, index) => (
-                                <div key={index} className="story-item">
-                                    <img
-                                        src={story.image}
-                                        alt={story.title}
-                                        className="story-image"
-                                    />
-                                    <div className="story-info">
-                                        <strong>{story.date}:</strong>
-                                        <p className="story-title">
-                                            {story.title}
-                                        </p>
+                            {user.stories_length.length > 0 ? (
+                                user.stories_length.map((story, index) => (
+                                    <div key={index} className="story-item">
+                                        <img
+                                            src={story.image}
+                                            alt={story.title}
+                                            className="story-image"
+                                        />
+                                        <div className="story-info">
+                                            <strong>{story.date}:</strong>
+                                            <p className="story-title">
+                                                {story.title}
+                                            </p>
+                                        </div>
                                     </div>
+                                ))
+                            ) : (
+                                <div className="noStory">
+                                       <h3>No story found</h3>
                                 </div>
-                            ))}
+                            )}  
                         </div>
                     </div>
                 </div>
