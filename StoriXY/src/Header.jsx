@@ -7,7 +7,7 @@ function Header({onClick, notificationCount})
   return (
     <>
         <header>
-            <h1>StoriXY</h1>
+            <h1 className='appName'>StoriXY</h1>
             <div className='notify_icon' onClick={onClick}>
               <span className="material-symbols-outlined notification-icon">notifications</span>
               {notificationCount > 0 && <p>{notificationCount}</p>}

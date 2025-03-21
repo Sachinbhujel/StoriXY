@@ -24,6 +24,10 @@ header h1 {
     font-weight: bold;
 }
 
+.appName{
+    cursor: pointer;
+}
+
 .notify_icon {
     display: flex;
     align-items: center;
@@ -119,9 +123,7 @@ header h1 {
     width: 100%;
     margin: 40px auto;
     padding: 16px;
-    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
@@ -139,11 +141,18 @@ header h1 {
 }
 
 .suggestion-item {
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px;
     border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.suggestion-item:hover{
+    background-color: #eee;
+    border-radius: 6px;
 }
 
 .suggestion-item span {
@@ -161,6 +170,7 @@ header h1 {
 .suggest-profile img {
     width: 40px;
     height: 40px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -171,6 +181,7 @@ header h1 {
 }
 
 .my-story-img {
+    cursor: pointer;
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -179,6 +190,7 @@ header h1 {
 }
 
 .add-story {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,6 +248,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     background: (45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    cursor: pointer;
 }
 
 .story-img {
@@ -278,6 +291,11 @@ header h1 {
     margin-top: 70px;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     color: #333;
+    cursor: pointer;
+}
+
+.following-div p{
+    cursor: pointer;
 }
 
 .trending-div {
@@ -452,12 +470,10 @@ header h1 {
 }
 
 .close-btn {
-    width: 40px;
     color: black;
     font-size: 1.6rem;
-    background-color: transparent;
-    border-radius: 50%;
-    height: 40px;
+    border: none;
+    background: transparent;
     cursor: pointer;
 }
 
@@ -465,6 +481,10 @@ header h1 {
     max-width: 700px;
     margin: auto;
     padding: 3px;
+}
+
+.notifications-title{
+    cursor: pointer;
 }
 
 .notify-div {
@@ -785,13 +805,6 @@ header h1 {
         font-size: 17px;
     }
 
-    .follow-btn {
-        margin-top: 5px;
-        width: 100%;
-        text-align: center;
-        display: none;
-    }
-
     .following-heading {
         margin-top: 50px;
         font-size: 20px;
@@ -911,10 +924,22 @@ header h1 {
     .next-button {
         right: 5px;
     }
+    .suggestions-list{
+        margin-bottom: 30px;
+    }
 }
 
 @media (max-width: 495px) {
     .full-screen-image {
         width: 100%;
+    }
+}
+
+@media (max-width: 380px){
+    .follow-btn {
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+        display: none;
     }
 }

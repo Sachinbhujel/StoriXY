@@ -8,7 +8,12 @@ const Search = () => {
     { id: 3, name: "Mike Johnson", followed: false, img: "https://media.istockphoto.com/id/1459324095/photo/img_6189.jpg?b=1&s=612x612&w=0&k=20&c=dSmFD0pja_HXocpC53jBUWxHaonTZuLfaTCVGZKEfZM=" },
     { id: 4, name: "Emily Brown", followed: false, img: "https://images.pexels.com/photos/8453568/pexels-photo-8453568.jpeg?auto=compress&cs=tinysrgb&w=800" },
     { id: 5, name: "Annie", followed: false, img: "https://images.pexels.com/photos/30913847/pexels-photo-30913847/free-photo-of-indoor-artistic-scene-with-calligraphy-and-cat.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" },
+    { id: 6, name: "Carly", followed: false, img: "https://images.pexels.com/photos/30954525/pexels-photo-30954525/free-photo-of-elegant-woman-in-white-backless-dress.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" },
+    { id: 7, name: "Saturn", followed: false, img: "https://images.pexels.com/photos/30736850/pexels-photo-30736850/free-photo-of-casual-portrait-of-a-man-in-berlin.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" },
+    { id: 8, name: "Beasy", followed: false, img: "https://images.pexels.com/photos/31024462/pexels-photo-31024462/free-photo-of-fresh-green-pears-in-a-white-bowl.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" },
+    { id: 9, name: "Everest_life", followed: false, img: "https://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpg?auto=compress&cs=tinysrgb&w=800" },
   ]);
+  const [inputText, setInputText] = useState("");
 
   const handleFollow = (id) => {
     setSuggestions((prev) =>
@@ -18,11 +23,24 @@ const Search = () => {
     );
   };
 
+  const handleSearch = (e) => {
+    let lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  }
+
+  const filterData = suggestions.filter((el) => {
+    if(inputText === ""){
+      return el;
+    } else{
+      return el.name.toLowerCase().includes(inputText);
+    }
+  })
+
   return (
     <div className="search-container">
-      <input type="text" placeholder="Search..." className="search-input" />
+      <input type="text" placeholder="Search..." className="search-input" onChange={handleSearch}/>
       <div className="suggestions-list">
-        {suggestions.map((user) => (
+        {filterData.map((user) => (
           <div key={user.id} className="suggestion-item">
             <div className="suggest-profile">
                 <img src={user.img} alt={user.id} className="user-img" />

@@ -49,9 +49,9 @@ const Notifications = ({ onClose }) => {
     return (
         <div className="notifications-container">
             <div className="notify-div">
-                <button className="close-btn" onClick={onClose}>
-                    ←
-                </button>
+                <span className="material-symbols-outlined close-btn" onClick={onClose}>
+arrow_back
+</span>
                 <h2 className="notifications-title">Notifications</h2>
             </div>
             <h3 className="day-title">Today</h3>
