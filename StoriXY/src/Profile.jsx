@@ -40,7 +40,12 @@ const Profile = ({ user, userClick, handleBackProfileBtn }) => {
         <>
             {userClick ? (
                 <div className="profile-container">
-                  <button className="profile-back-btn" onClick={handleBackProfileBtn}>Back</button>
+                    <span
+                        className="material-symbols-outlined profile-back-btn"
+                        onClick={handleBackProfileBtn}
+                    >
+                        arrow_back
+                    </span>
                     <div className="profile-header">
                         <img src={user.img} className="profile-icon" />
                         <div>
@@ -89,9 +94,9 @@ const Profile = ({ user, userClick, handleBackProfileBtn }) => {
                                 ))
                             ) : (
                                 <div className="noStory">
-                                       <h3>No story found</h3>
+                                    <h3>No story found</h3>
                                 </div>
-                            )}  
+                            )}
                         </div>
                     </div>
                 </div>
