@@ -364,8 +364,20 @@ header h1 {
     font-family: Arial, sans-serif;
 }
 
+.profile-back-btn{
+    position: absolute;
+    margin-top: 55px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    width: 70px;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
 .profile-header {
-    margin-top: 70px;
+    margin-top: 57px;
     display: flex;
     gap: 20px;
     padding-bottom: 20px;
@@ -373,13 +385,17 @@ header h1 {
 }
 
 .profile-icon {
+    object-fit: cover;
+    border-radius: 50%;
     margin-top: -3px;
     color: gray;
     width: 80px;
     height: 80px;
+    cursor: pointer;
 }
 
 .profile-name {
+    cursor: pointer;
     font-size: 20px;
     font-weight: bold;
 }
@@ -394,6 +410,10 @@ header h1 {
     gap: 15px;
     margin: 10px 0;
     font-size: 14px;
+}
+
+.profile-stats span{
+    cursor: pointer;
 }
 
 .edit-profile-btn {
@@ -438,6 +458,7 @@ header h1 {
     gap: 15px;
     overflow-x: auto;
     padding: 10px 0;
+    margin-bottom: 50px;
 }
 
 .story-item {
@@ -457,6 +478,7 @@ header h1 {
     object-fit: cover;
     border: 2px solid #ddd;
     padding: 2px;
+    cursor: pointer;
 }
 
 .story-info {
@@ -465,7 +487,12 @@ header h1 {
     color: gray;
 }
 
+.story-info strong{
+    cursor: pointer;
+}
+
 .story-title {
+    cursor: pointer;
     margin-top: 10px;
 }
 
@@ -926,6 +953,10 @@ header h1 {
     }
     .suggestions-list{
         margin-bottom: 30px;
+    }
+    .profile-back-btn{
+        margin-top: 45px;
+        right: 4px;
     }
 }
 
