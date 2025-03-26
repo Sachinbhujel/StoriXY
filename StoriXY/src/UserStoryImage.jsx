@@ -10,10 +10,10 @@ function UserStoryImage({
     trendingImageUrl,
     handleTrendingStoryBack
 }) {
-    const [followButtonClick, setFollowButtonnClick] = useState(false);
+    const [followButtonClick, setFollowButtonClick] = useState(false);
 
     const handleFollowButtonClick = () => {
-        setFollowButtonnClick(!followButtonClick);
+        setFollowButtonClick(!followButtonClick);
     }
     return (
         <>  
