@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import "./App.css";
+import UserStoryImage from "./UserStoryImage";
+import Edits from "./Edits";
 
 const Profile = ({ user, userClick, handleBackProfileBtn }) => {
     const [stories] = useState([
@@ -36,54 +38,167 @@ const Profile = ({ user, userClick, handleBackProfileBtn }) => {
         },
     ]);
 
+    const [userStoryClick, setUserStoryClick] = useState(false);
+    const [userImageUrl, setUserImageUrl] = useState("");
+
+    const [myStoryClick, setMyStoryClick] = useState(false);
+    const [myImageUrl, setMyImageUrl] = useState("");
+
+    const [editButtonClick, setEditButtonClick] = useState(false);
+
+    const handleUserStoryImage = (imageUrl) => {
+        setUserStoryClick(true);
+        setUserImageUrl(imageUrl);
+    };
+
+    const handleUserStoryBack = () => {
+        setUserStoryClick(false);
+    }
+
+    const handleMyStoryImage = (imageUrl) => {
+        setMyStoryClick(true);
+        setMyImageUrl(imageUrl);
+    }
+
+    const handleMyStoryBack = () => {
+        setMyStoryClick(false);
+    }
+ 
+    const handleMyEditData = () => {
+        setEditButtonClick(true);
+    }
+
+    const [profileImg, setProfileImg] = useState("https://images.pexels.com/photos/4623518/pexels-photo-4623518.jpeg?auto=compress&cs=tinysrgb&w=800");
+    const [name, setName] = useState("John Doe");
+    const [bio, setBio] = useState("Web Developer | Traveler");
+
+    const updateProfile = (updateName, updateBio, updateImage) => {
+        setName(updateName);
+        setBio(updateBio);
+        setProfileImg(updateImage);
+    }
+
     return (
         <>
-            {userClick ? (
-                <div className="profile-container">
-                    <span
-                        className="material-symbols-outlined profile-back-btn"
-                        onClick={handleBackProfileBtn}
-                    >
-                        arrow_back
-                    </span>
-                    <div className="profile-header">
-                        <img src={user.img} className="profile-icon" />
-                        <div>
-                            <h2 className="profile-name">{user.name}</h2>
-                            <p className="profile-bio">{user.bio}</p>
-                            <div className="profile-stats">
-                                <span>
-                                    <strong>{user.stories}</strong> Stories
-                                </span>
-                                <span>
-                                    <strong>{user.followers}</strong> Followers
-                                </span>
-                                <span>
-                                    <strong>{user.following}</strong> Following
-                                </span>
+            {editButtonClick ? (
+                <Edits userImg={profileImg} setEditButtonClick={setEditButtonClick}
+                initialName={name}
+                    initialBio={bio} 
+                    updateProfile={updateProfile}/>
+            ) : (
+                userStoryClick ? (
+                    <UserStoryImage userImageUrl={userImageUrl} handleUserStoryBack={handleUserStoryBack} userStoryClick={userStoryClick} />
+                ) : userClick ? (
+                    <div className="profile-container">
+                        <span
+                            className="material-symbols-outlined profile-back-btn"
+                            onClick={handleBackProfileBtn}
+                        >
+                            arrow_back
+                        </span>
+                        <div className="profile-header">
+                            <img src={user.img} className="profile-icon" />
+                            <div>
+                                <h2 className="profile-name">{user.name}</h2>
+                                <p className="profile-bio">{user.bio}</p>
+                                <div className="profile-stats">
+                                    <span>
+                                        <strong>{user.stories}</strong> Stories
+                                    </span>
+                                    <span>
+                                        <strong>{user.followers}</strong> Followers
+                                    </span>
+                                    <span>
+                                        <strong>{user.following}</strong> Following
+                                    </span>
+                                </div>
+                                <div className="edit-share-button">
+                                    <button className="edit-profile-btn">
+                                        Edit Profile
+                                    </button>
+                                    <button className="share-profile-btn">
+                                        Share Profile
+                                    </button>
+                                </div>
                             </div>
-                            <div className="edit-share-button">
-                                <button className="edit-profile-btn">
-                                    Edit Profile
-                                </button>
-                                <button className="share-profile-btn">
-                                    Share Profile
-                                </button>
+                        </div>
+    
+                        <div className="stories-section">
+                            <h3 className="stories-title">Stories</h3>
+                            <div className="stories-list">
+                                {user.stories_length.length > 0 ? (
+                                    user.stories_length.map((story, index) => (
+                                        <div key={index} className="story-item">
+                                            <img
+                                                src={story.image}
+                                                alt={story.title}
+                                                className="story-image"
+                                                onClick={() =>
+                                                    handleUserStoryImage(
+                                                        story.image
+                                                    )
+                                                }
+                                            />
+                                            <div className="story-info">
+                                                <strong>{story.date}:</strong>
+                                                <p className="story-title">
+                                                    {story.title}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="noStory">
+                                        <h3>No story found</h3>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
-
-                    <div className="stories-section">
-                        <h3 className="stories-title">Stories</h3>
-                        <div className="stories-list">
-                            {user.stories_length.length > 0 ? (
-                                user.stories_length.map((story, index) => (
+                ) : (
+                    myStoryClick ? (
+                        <UserStoryImage myImageUrl={myImageUrl} handleMyStoryBack={handleMyStoryBack}/>
+                    ) : (
+                        <div className="profile-container">
+                        <div className="profile-header">
+                            <img src={profileImg} className="profile-icon"/>
+                            <div>
+                                <h2 className="profile-name">{name}</h2>
+                                <p className="profile-bio">
+                                    {bio}
+                                </p>
+                                <div className="profile-stats">
+                                    <span>
+                                        <strong>6</strong> Stories
+                                    </span>
+                                    <span>
+                                        <strong>667</strong> Followers
+                                    </span>
+                                    <span>
+                                        <strong>348</strong> Following
+                                    </span>
+                                </div>
+                                <div className="edit-share-button">
+                                    <button className="edit-profile-btn" onClick={handleMyEditData}>
+                                        Edit Profile
+                                    </button>
+                                    <button className="share-profile-btn">
+                                        Share Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div className="stories-section">
+                            <h3 className="stories-title">Stories</h3>
+                            <div className="stories-list">
+                                {stories.map((story, index) => (
                                     <div key={index} className="story-item">
                                         <img
                                             src={story.image}
                                             alt={story.title}
                                             className="story-image"
-                                        />
+                                        onClick={() => handleMyStoryImage(story.image)}/>
                                         <div className="story-info">
                                             <strong>{story.date}:</strong>
                                             <p className="story-title">
@@ -91,68 +206,14 @@ const Profile = ({ user, userClick, handleBackProfileBtn }) => {
                                             </p>
                                         </div>
                                     </div>
-                                ))
-                            ) : (
-                                <div className="noStory">
-                                    <h3>No story found</h3>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div className="profile-container">
-                    <div className="profile-header">
-                        <FaUserCircle className="profile-icon" />
-                        <div>
-                            <h2 className="profile-name">John Doe</h2>
-                            <p className="profile-bio">
-                                Web Developer | Traveler
-                            </p>
-                            <div className="profile-stats">
-                                <span>
-                                    <strong>6</strong> Stories
-                                </span>
-                                <span>
-                                    <strong>667</strong> Followers
-                                </span>
-                                <span>
-                                    <strong>348</strong> Following
-                                </span>
-                            </div>
-                            <div className="edit-share-button">
-                                <button className="edit-profile-btn">
-                                    Edit Profile
-                                </button>
-                                <button className="share-profile-btn">
-                                    Share Profile
-                                </button>
+                                ))}
                             </div>
                         </div>
                     </div>
-
-                    <div className="stories-section">
-                        <h3 className="stories-title">Stories</h3>
-                        <div className="stories-list">
-                            {stories.map((story, index) => (
-                                <div key={index} className="story-item">
-                                    <img
-                                        src={story.image}
-                                        alt={story.title}
-                                        className="story-image"
-                                    />
-                                    <div className="story-info">
-                                        <strong>{story.date}:</strong>
-                                        <p className="story-title">
-                                            {story.title}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                    )
+                )
             )}
+            
         </>
     );
 };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import UserStoryImage from "./UserStoryImage";
 
 const trendingStories = [
     {
@@ -174,78 +175,118 @@ const indianActorStories = [
 ];
 
 function Trending() {
+    const [trendingUserStoryClick, setTrendingUserStoryClick] = useState(false);
+    const [trendingImageUrl, setTrendingImageUrl] = useState("");
+
+    const handleTrendingUserStory = (trendingUserImgUrl) => {
+        setTrendingUserStoryClick(true);
+        setTrendingImageUrl(trendingUserImgUrl);
+    };
+
+    const handleTrendingStoryBack = () => {
+        setTrendingUserStoryClick(false);
+    };
+
     return (
         <>
-            <div className="following-div">
-                <h2 className="following-heading">Trending</h2>
-                <p>View all</p>
-            </div>
-            <div className="trending-container">
-                {trendingStories.map((story) => (
-                    <div key={story.id} className="trending-story">
-                        <img
-                            src={story.image}
-                            alt={story.name}
-                            className="trending-img"
-                        />
-                        <p className="trending-name">{story.name}</p>
+            {trendingUserStoryClick ? (
+                <UserStoryImage
+                    trendingImageUrl={trendingImageUrl}
+                    trendingUserStoryClick={trendingUserStoryClick}
+                    handleTrendingStoryBack={handleTrendingStoryBack}
+                />
+            ) : (
+                <>
+                    <div className="following-div">
+                        <h2 className="following-heading">Trending</h2>
+                        <p>View all</p>
                     </div>
-                ))}
-            </div>
-            <div className="another-div">
-                <div className="following-div">
-                <h2 className="following-heading">Influencer</h2>
-                <p>View all</p>
-                </div>
-                <div className="trending-container">
-                {influencerStories.map((story) => (
-                    <div key={story.id} className="trending-story">
-                        <img
-                            src={story.image}
-                            alt={story.name}
-                            className="trending-img"
-                        />
-                        <p className="trending-name">{story.name}</p>
+                    <div className="trending-container">
+                        {trendingStories.map((story) => (
+                            <div key={story.id} className="trending-story">
+                                <img
+                                    src={story.image}
+                                    alt={story.name}
+                                    className="trending-img"
+                                    onClick={() =>
+                                        handleTrendingUserStory(story.image)
+                                    }
+                                />
+                                <p className="trending-name">{story.name}</p>
+                            </div>
+                        ))}
                     </div>
-                ))}
-                </div>
-            </div>
-            <div className="another-div">
-                <div className="following-div">
-                <h2 className="following-heading">Indian</h2>
-                <p>View all</p>
-                </div>
-                <div className="trending-container">
-                {indianStories.map((story) => (
-                    <div key={story.id} className="trending-story">
-                        <img
-                            src={story.image}
-                            alt={story.name}
-                            className="trending-img"
-                        />
-                        <p className="trending-name">{story.name}</p>
+                    <div className="another-div">
+                        <div className="following-div">
+                            <h2 className="following-heading">Influencer</h2>
+                            <p>View all</p>
+                        </div>
+                        <div className="trending-container">
+                            {influencerStories.map((story) => (
+                                <div key={story.id} className="trending-story">
+                                    <img
+                                        src={story.image}
+                                        alt={story.name}
+                                        className="trending-img"
+                                        onClick={() =>
+                                            handleTrendingUserStory(story.image)
+                                        }
+                                    />
+                                    <p className="trending-name">
+                                        {story.name}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                ))}
-                </div>
-            </div>
-            <div className="another-div">
-                <div className="following-div">
-                <h2 className="following-heading">Indian Actor</h2>
-                <p>View all</p>
-                </div>
-                <div className="trending-container">
-                {indianActorStories.map((story) => (
-                    <div key={story.id} className="trending-story">
-                        <img
-                            src={story.image}
-                            alt={story.name}
-                            className="trending-img"
-                        />
-                        <p className="trending-name">{story.name}</p>
+                    <div className="another-div">
+                        <div className="following-div">
+                            <h2 className="following-heading">Indian</h2>
+                            <p>View all</p>
+                        </div>
+                        <div className="trending-container">
+                            {indianStories.map((story) => (
+                                <div key={story.id} className="trending-story">
+                                    <img
+                                        src={story.image}
+                                        alt={story.name}
+                                        className="trending-img"
+                                        onClick={() =>
+                                            handleTrendingUserStory(story.image)
+                                        }
+                                    />
+                                    <p className="trending-name">
+                                        {story.name}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                ))}
-                </div>
-            </div>
+                    <div className="another-div">
+                        <div className="following-div">
+                            <h2 className="following-heading">Indian Actor</h2>
+                            <p>View all</p>
+                        </div>
+                        <div className="trending-container">
+                            {indianActorStories.map((story) => (
+                                <div key={story.id} className="trending-story">
+                                    <img
+                                        src={story.image}
+                                        alt={story.name}
+                                        className="trending-img"
+                                        onClick={() =>
+                                            handleTrendingUserStory(story.image)
+                                        }
+                                    />
+                                    <p className="trending-name">
+                                        {story.name}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </>
+            )}{" "}
         </>
     );
 }
