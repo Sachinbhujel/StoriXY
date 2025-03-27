@@ -489,7 +489,7 @@ const indianActorStories = [
     {
         id: 1,
         name: "Shahrukh Khan",
-        image: "https://www.boxofficeindia.com/images/actors/img1381589927819216841.jpg",
+        image: "https://media.gettyimages.com/id/499342415/photo/2001-shahrukh-khan-posing.jpg?s=612x612&w=0&k=20&c=9ztucLhMf8qRQMZ4iEnAjceaC6sLz9G39YFnFToIdQc=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -516,7 +516,7 @@ const indianActorStories = [
     {
         id: 2,
         name: "Akshay Kumar",
-        image: "https://www.boxofficeindia.com/images/actors/img1389915166750912287.jpg",
+        image: "https://media.gettyimages.com/id/1357871661/photo/jeddah-saudi-arabia-akshay-kumar-attends-in-conversation-with-akshay-kumar-at-the-red-sea.jpg?s=612x612&w=0&k=20&c=o2BhtrY-_Jt0yr25aIG22SrP9KFoTmiT6t1TXAXDPgU=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -543,7 +543,7 @@ const indianActorStories = [
     {
         id: 3,
         name: "Hrithik Roshan",
-        image: "https://www.boxofficeindia.com/images/actors/img138082451834768460.jpg",
+        image: "https://media.gettyimages.com/id/99884083/photo/london-united-kingdom-hrithik-roshan-attends-the-european-premiere-of-kites-at-odeon-west-end.jpg?s=612x612&w=0&k=20&c=RaDMZKoX3XB7crCvBA8ueUbK6Ct8FaR0jFbfSPCNpsw=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -570,7 +570,7 @@ const indianActorStories = [
     {
         id: 4,
         name: "Ranbir Kapoor",
-        image: "https://www.boxofficeindia.com/images/actors/img1371579277782695311.jpg",
+        image: "https://media.gettyimages.com/id/1447478131/photo/jeddah-saudi-arabia-ranbir-kapoor-attends-the-gq-dinner-at-the-red-sea-international-film.jpg?s=612x612&w=0&k=20&c=BN2TlYuDo9x_8T5mjO-2w2eJ_WG7DEO0T7KnJhH64yo=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -597,7 +597,7 @@ const indianActorStories = [
     {
         id: 5,
         name: "Ajay Devgn",
-        image: "https://www.boxofficeindia.com/images/actors/img1371578274503134131.jpg",
+        image: "https://media.gettyimages.com/id/1249148064/photo/bollywood-actor-ajay-devgn-poses-during-the-indian-sports-honours-in-mumbai-india-23-march.jpg?s=612x612&w=0&k=20&c=ysTcqDZERzd9mAw5pq5vEaNbvi1nDnkKjryqerdB1b4=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -624,7 +624,7 @@ const indianActorStories = [
     {
         id: 6,
         name: "Aamir Khan",
-        image: "https://www.boxofficeindia.com/images/actors/img13715782421216911107.jpg",
+        image: "https://media.gettyimages.com/id/2188339373/photo/jeddah-saudi-arabia-aamir-khan-poses-for-a-photocall-ahead-of-the-in-conversation-with-aamir.jpg?s=612x612&w=0&k=20&c=WSpcaFJn1y0fGttccw1JrK2lauTK9SFgLa4R2D3Y4O4=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,
@@ -651,7 +651,7 @@ const indianActorStories = [
     {
         id: 7,
         name: "Salman Khan",
-        image: "https://www.boxofficeindia.com/images/actors/img13895131861353198038.jpg",
+        image: "https://media.gettyimages.com/id/1481213930/photo/mumbai-india-salman-khan-attends-the-trailer-launch-of-film-kisi-ka-bhai-kisi-ki-jaan-on.jpg?s=612x612&w=0&k=20&c=oCPDySpbI4maJzi5Q7arnJOP20cLrVSsKidBmG7cTjA=",
         img: "https://images.pexels.com/photos/13894435/pexels-photo-13894435.jpeg?auto=compress&cs=tinysrgb&w=800",
             bio: "huh stalking!",
             stories: 3,

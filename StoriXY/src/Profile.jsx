@@ -73,7 +73,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
     const [bio, setBio] = useState("Web Developer | Traveler");
 
     const [otherProfileStoryImg, setOthersProfileStoryImg] = useState("");
-    const [otherProfileStoryImgClick, setOthersProfileStoryImgClick] = useState(false);
+    const [othersProfileStoryImgClick, setOthersProfileStoryImgClick] = useState(false);
 
     const updateProfile = (updateName, updateBio, updateImage) => {
         setName(updateName);
@@ -95,8 +95,8 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
     return (
         <>
         {
-            otherProfileStoryImgClick ? (
-                <UserStoryImage othersStoryImg={otherProfileStoryImg} othersStoryClick={otherProfileStoryImgClick} /> 
+            othersProfileStoryImgClick ? (
+                <UserStoryImage othersStoryImg={otherProfileStoryImg} othersStoryClick={othersProfileStoryImgClick} setOthersProfileStoryImgClick={setOthersProfileStoryImgClick}/> 
             ) : (
                 trendingUserNameClick ? (
                     <div className="profile-container">

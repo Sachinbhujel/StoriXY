@@ -10,7 +10,8 @@ function UserStoryImage({
     trendingImageUrl,
     handleTrendingStoryBack,
     othersStoryImg,
-    othersStoryClick
+    othersStoryClick,
+    setOthersProfileStoryImgClick
 }) {
     const [followButtonClick, setFollowButtonClick] = useState(false);
 
@@ -18,6 +19,10 @@ function UserStoryImage({
         setFollowButtonClick(!followButtonClick);
     }
     
+    const handleOthersStoryBack = () => {
+        setOthersProfileStoryImgClick(false);
+    }
+
     return (
         <>  
         {
@@ -26,7 +31,7 @@ function UserStoryImage({
                 <button
                     className="back-button"
                     onClick={
-                        handleTrendingStoryBack
+                        handleOthersStoryBack
                     }
                 >
                     ←
