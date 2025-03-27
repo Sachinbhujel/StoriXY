@@ -103,6 +103,15 @@ header h1 {
     border-radius: 50%;
 }
 
+.bottom_bar .material-symbols-outlined {
+    color: silver;
+    transition: color 0.3s ease;
+}
+
+.bottom_bar .active .material-symbols-outlined {
+    color: black;
+}
+
 .bottom_bar .home,
 .bottom_bar .search,
 .bottom_bar .trending,
@@ -110,6 +119,7 @@ header h1 {
     position: relative;
     bottom: -2px;
     color: #333;
+    text-decoration: none;
 }
 
 .bottom_bar span {

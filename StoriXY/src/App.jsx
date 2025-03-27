@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './App.css'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header'
 import Bottom from './Bottom'
 import Notifications from './Notifications'
@@ -26,7 +27,9 @@ function App()
       ) : (
         <div className="header">
           <Header onClick={handleOpenNotifications} notificationCount={notificationCount} />
-          <Bottom />
+          <Router>
+            <Bottom />
+          </Router>
         </div>
       )}
     </>
