@@ -22,6 +22,10 @@ header {
     z-index: 100;
 }
 
+.appXY{
+    color: orange;
+}
+
 header h1 {
     font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
@@ -624,102 +628,74 @@ header h1 {
     border: 3px solid #3ddc97;
 }
 
-.add-story-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    position: relative;
-    max-width: 700px;
+.add-story-container{
+    max-width: 600px;
     margin: auto;
+    margin-top: 60px;
 }
 
-.top-bar {
+.add-story-container .top-bar{
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 15px;
-    margin-top: 62px;
+    gap: 16px;
+    padding: 10px;
 }
 
-.top-bar h2 {
-    color: black;
-    font-family: arial;
-    font-size: 21px;
-}
-
-.back-btn-div{
+.back-btn{
+    font-size: 28px;
     cursor: pointer;
 }
 
-.back-btn,
-.post-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
+.top-bar h2{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-btn{
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    width: 50px;
+    color: white;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    border-radius: 30px;
 }
 
-.back-btn {
-    width: 40px;
-    height: 40px;
+.preview-container{
+    padding: 10px;
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6rem;
-    border-radius: 50%;
+    height: 60vh;
+    border: 2px dashed grey;
 }
 
-.post-btn:disabled {
-    cursor: default;
-}
-
-.preview-container {
-    margin-top: -50px;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-img {
-    width: 80%;
-    margin-top: -81px;
-    height: 80%;
-    object-fit: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-}
-
-.upload-placeholder {
+.upload-placeholder{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    height: 70vh;
-    border: 2px dashed gray;
-    border-radius: 20px;
-    text-align: center;
-    cursor: pointer;
-    margin-top: -70px;
 }
 
-.upload-placeholder .material-symbols-outlined {
-    font-size: 50px;
-    color: gray;
+.upload-placeholder .material-symbols-outlined{
+    font-size: 40px;
 }
 
-.upload-placeholder p {
-    color: gray;
-    font-size: 16px;
-    margin-top: 10px;
-    font-family: arial;
+.preview-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-placeholder p{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .image-view {

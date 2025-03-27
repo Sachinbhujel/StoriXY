@@ -17,18 +17,19 @@ function AddStory({ onBack, onUpload }) {
             onUpload(selectedFile);
             onBack();
         }
+        console.log("Button is clicked");
     };
 
     return (
         <div className="add-story-container">
             <div className="top-bar">
-                <div className="back-btn-div" onClick={onBack}>
-                    <button className="back-btn">←</button>
+                <div className="back-btn-div">
+                    <span className="back-btn" onClick={onBack}>←</span>
                 </div>
-                <h2>New Story</h2>
-                <button className="post-btn" onClick={handlePost} disabled={!selectedFile}>
+                <h2>Add Story</h2>
+                <span className="post-btn" onClick={handlePost} disabled={!selectedFile}>
                     Post
-                </button>
+                </span>
             </div>
 
             <div className="preview-container">
