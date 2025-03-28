@@ -1,14 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header'
 import Bottom from './Bottom'
-import Notifications from './Notifications'
+import Notifications from './Notifications';
+import Page_load from './Page_load';
+import SignUp from './SignUp';
 
 function App()
 {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationCount, setNotificationCount] = useState(4);
+  const [loading, setLoading] = useState(true);
+  const [signUpShow, setSignUpShow] = useState(false); 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setSignUpShow(true);
+    }, 3000)
+
+    return () => clearTimeout(timer);
+  }, [])
 
   const handleOpenNotifications = () => {
     setShowNotifications(true);
@@ -20,18 +33,29 @@ function App()
     setNotificationCount(0);
   };
 
+
+  if (loading) {
+    return <Page_load />;
+  }
+
   return (
     <>
-      {showNotifications ? (
-        <Notifications onClose={handleCloseNotifications} />
+    {
+      signUpShow ? (
+        <SignUp setSignUpShow={setSignUpShow}/>
       ) : (
-        <div className="header">
-          <Header onClick={handleOpenNotifications} notificationCount={notificationCount} />
-          <Router>
-            <Bottom />
-          </Router>
-        </div>
-      )}
+        showNotifications ? (
+          <Notifications onClose={handleCloseNotifications} />
+        ) : (
+          <div className="header">
+            <Header onClick={handleOpenNotifications} notificationCount={notificationCount} />
+            <Router>
+              <Bottom />
+            </Router>
+          </div>
+        )
+      )
+    }
     </>
   )
 }
