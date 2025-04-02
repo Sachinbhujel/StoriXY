@@ -686,6 +686,7 @@ header h1 {
 
 .upload-placeholder .material-symbols-outlined{
     font-size: 40px;
+    cursor: pointer;
 }
 
 .preview-img{
@@ -907,13 +908,44 @@ header h1 {
     height: 100px;
   }
 
+  .not-login-div{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    padding: 10px;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .not-login-div h3{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  .not-login-div button{
+    font-size: 13px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+
+  .not-login-div button:hover{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+
   .container {
     position: relative;
     background-color: #ffffff;
     padding: 1rem;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 400px;
     text-align: center;
     margin: auto;
     font-family: "Poppins", sans-serif;
@@ -921,9 +953,9 @@ header h1 {
 
 .signup-back-btn{
     position: absolute;
-    top: 12px;
+    top: 14.5px;
     cursor: pointer;
-    font-size: 28px;    
+    font-size: 24px;    
     left: 8px;
 }
 

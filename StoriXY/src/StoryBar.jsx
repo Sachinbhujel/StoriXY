@@ -114,8 +114,9 @@ function StoryBar({ uploadedImages = [] }) {
     ].filter(Boolean);
 
     const handleViewStory = (index) => {
+        console.log(index);
         {
-            index === 0 ? setImageToShow(images[index]) : setImageToShow(index);
+            index === 0 ? setImageToShow(images[index]) : setImageToShow(images[index]);
         }
         setShowImageView(true);
         setShowDeleteButton(index === 0);
