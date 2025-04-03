@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import "./App.css";
 import UserStoryImage from "./UserStoryImage";
 import Edits from "./Edits";
+import Share from './Share';
 
 const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameClick, story, trendingUserNameClick }) => {
     const [stories] = useState([
@@ -92,14 +93,28 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
         console.log(storiesImg);
     }
 
+    const [shareClick, setShareClick] = useState(false);
+    const [shareUserName, setShareUserName] = useState("");
+    const [shareUserImage, setShareUserImage] = useState("");
+    const handleShareProfile = (name, image) => {
+        setShareClick(true);
+        setShareUserName(name);
+        setShareUserImage(image);
+    }
+
+    const handleShareBackBtn = () => {
+        setShareClick(false);
+    }
+
     return (
         <>
+        { shareClick && <Share name={shareUserName} profileImage={shareUserImage} handleShareBackBtn={handleShareBackBtn}/>}
         {
             othersProfileStoryImgClick ? (
                 <UserStoryImage othersStoryImg={otherProfileStoryImg} othersStoryClick={othersProfileStoryImgClick} setOthersProfileStoryImgClick={setOthersProfileStoryImgClick}/> 
             ) : (
                 trendingUserNameClick ? (
-                    <div className="profile-container">
+                    <div className={`profile-container ${shareClick ? "blurred-bg" : ""}`}>
                     <span
                         className="material-symbols-outlined profile-back-btn"
                         onClick={handleOthersProfileBackBtn}
@@ -126,7 +141,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                                 <button className="edit-profile-btn">
                                     Message
                                 </button>
-                                <button className="share-profile-btn">
+                                <button className="share-profile-btn" onClick={() => handleShareProfile(story.name, story.image)}>
                                     Share Profile
                                 </button>
                             </div>
@@ -175,7 +190,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                         userStoryClick ? (
                             <UserStoryImage userImageUrl={userImageUrl} handleUserStoryBack={handleUserStoryBack} userStoryClick={userStoryClick} />
                         ) : userClick ? (
-                            <div className="profile-container">
+                            <div className={`profile-container ${shareClick ? "blurred-bg" : ""}`}>
                                 <span
                                     className="material-symbols-outlined profile-back-btn"
                                     onClick={handleBackProfileBtn}
@@ -202,7 +217,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                                             <button className="edit-profile-btn">
                                                 Message
                                             </button>
-                                            <button className="share-profile-btn">
+                                            <button className="share-profile-btn" onClick={() => handleShareProfile(user.name, user.img)}>
                                                 Share Profile
                                             </button>
                                         </div>
@@ -245,7 +260,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                             myStoryClick ? (
                                 <UserStoryImage myImageUrl={myImageUrl} handleMyStoryBack={handleMyStoryBack}/>
                             ) : (
-                                <div className="profile-container">
+                                <div className={`profile-container ${shareClick ? "blurred-bg" : ""}`}>
                                 <div className="profile-header">
                                     <img src={profileImg} className="profile-icon"/>
                                     <div>
@@ -268,7 +283,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                                             <button className="edit-profile-btn" onClick={handleMyEditData}>
                                                 Edit Profile
                                             </button>
-                                            <button className="share-profile-btn">
+                                            <button className="share-profile-btn" onClick={() => handleShareProfile(name, profileImg)}>
                                                 Share Profile
                                             </button>
                                         </div>

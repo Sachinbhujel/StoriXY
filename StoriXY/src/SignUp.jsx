@@ -39,9 +39,10 @@ function SignUp({ setSignUpShow }) {
         <>
             {userLoginMessage ? (
                 <div className="not-login-div">
-                    <h3>Hey you! You are not login. Stay ahead!!</h3>
-                    <button onClick={handleDemoPage}>Check Demo</button>
-                </div>
+                <h3>You have exited the sign-up process.</h3>
+                <p>Come back anytime to create an account!</p>
+                <button onClick={handleDemoPage}>Explore Demo</button>
+            </div>
             ) : (
                 <div className="container">
                     <span
