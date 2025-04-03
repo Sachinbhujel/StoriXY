@@ -7,6 +7,7 @@ import Notifications from './Notifications';
 import Page_load from './Page_load';
 import SignUp from './SignUp';
 import Share from './Share';
+import Message from './Message';
 
 function App()
 {

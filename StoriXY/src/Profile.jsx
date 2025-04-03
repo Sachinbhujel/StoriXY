@@ -4,6 +4,7 @@ import "./App.css";
 import UserStoryImage from "./UserStoryImage";
 import Edits from "./Edits";
 import Share from './Share';
+import Message from "./Message";
 
 const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameClick, story, trendingUserNameClick }) => {
     const [stories] = useState([
@@ -106,10 +107,27 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
         setShareClick(false);
     }
 
+    const [messageClick, setMessageClick] = useState(false);
+    const [messageProfileName, setMessageProfileName] = useState("");
+    const [messageProfileImage, setMessageProifleImage] = useState("");
+    const handleMessageProfile = (name, image) => {
+        setMessageClick(true);
+        setMessageProfileName(name);
+        setMessageProifleImage(image);
+    }
+
+    const handleMessageBackBtn = () => {
+        setMessageClick(false);
+    }
+
     return (
         <>
+        
         { shareClick && <Share name={shareUserName} profileImage={shareUserImage} handleShareBackBtn={handleShareBackBtn}/>}
-        {
+        
+        {messageClick ? (
+            <Message name={messageProfileName} profileImage={messageProfileImage} handleMessageBackBtn={handleMessageBackBtn} />)
+        : (
             othersProfileStoryImgClick ? (
                 <UserStoryImage othersStoryImg={otherProfileStoryImg} othersStoryClick={othersProfileStoryImgClick} setOthersProfileStoryImgClick={setOthersProfileStoryImgClick}/> 
             ) : (
@@ -138,7 +156,7 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                                 </span>
                             </div>
                             <div className="edit-share-button">
-                                <button className="edit-profile-btn">
+                                <button className="edit-profile-btn" onClick={() => handleMessageProfile(story.name, story.image)}>
                                     Message
                                 </button>
                                 <button className="share-profile-btn" onClick={() => handleShareProfile(story.name, story.image)}>
@@ -316,7 +334,8 @@ const Profile = ({ user, userClick, handleBackProfileBtn, setTrendingUserNameCli
                     )
                 )
             )
-        }
+
+        )}
         </>
     );
 };
