@@ -40,25 +40,19 @@ function App()
     return <Page_load />;
   }
 
-  return (
-    <>
-    {
-      signUpShow ? (
-        <SignUp setSignUpShow={setSignUpShow}/>
+ return (
+    <Router>
+      {signUpShow ? (
+        <SignUp setSignUpShow={setSignUpShow} />
+      ) : showNotifications ? (
+        <Notifications onClose={handleCloseNotifications} />
       ) : (
-        showNotifications ? (
-          <Notifications onClose={handleCloseNotifications} />
-        ) : (
-          <div className="header">
-            <Header onClick={handleOpenNotifications} notificationCount={notificationCount} />
-            <Router>
-              <Bottom />
-            </Router>
-          </div>
-        )
-      )
-    }
-    </>
+        <div className="header">
+          <Header onClick={handleOpenNotifications} notificationCount={notificationCount} />
+          <Bottom />
+        </div>
+      )}
+    </Router>
   )
 }
 export default App
